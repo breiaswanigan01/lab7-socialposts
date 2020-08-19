@@ -1,0 +1,16 @@
+<!-- POPUP -->
+<!-- if form isn't there, show button -->
+<button *ngIf="showForm === false" (click)="toggleForm()">Show Form</button>
+<!-- if form is there, don't show button -->
+<app-post-form
+  (submitted)="onSubmit($event)"
+  *ngIf="showForm === true"
+></app-post-form>
+<ol>
+  <app-post
+    *ngFor="let post of posts; index as i"
+    [postRef]="post"
+    (deleted)="onDelete(i)"
+  >
+  </app-post>
+</ol>
